@@ -8,15 +8,6 @@
     </parent>
     <groupId>org.skytouch</groupId>
     <artifactId>commons</artifactId>
-    <name>Archetype - commons</name>
+    <name>commons</name>
     <url>http://maven.apache.org</url>
-    <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.32</version>
-            <scope>provided</scope>
-        </dependency>
-
-    </dependencies>
 </project>

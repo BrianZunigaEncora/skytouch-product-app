@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("/test")
-public class Product {
+public class ProductController {
 
     @GetMapping("/hello")
     public ProductModel hello2() {

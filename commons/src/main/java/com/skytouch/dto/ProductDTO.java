@@ -1,15 +1,13 @@
-package com.skytouch.model;
+package com.skytouch.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class ProductModel {
+public class ProductDTO {
     private String name;
     private BigDecimal cost;
     private String storeName;

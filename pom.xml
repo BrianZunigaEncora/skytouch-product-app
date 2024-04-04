@@ -16,7 +16,8 @@
 	<description>Task for skytouch. </description>
 	<modules>
 		<module>commons</module>
-		<module>productservice</module>
+		<module>productService</module>
+		<module>productsManagement</module>
 	</modules>
 	<properties>
 		<java.version>1.8</java.version>

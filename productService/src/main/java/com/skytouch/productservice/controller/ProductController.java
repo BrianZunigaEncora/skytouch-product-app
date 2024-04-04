@@ -3,7 +3,7 @@ package com.skytouch.productservice.controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.skytouch.model.ProductModel;
+import com.skytouch.entity.ProductEntity;
 
 import java.math.BigDecimal;
 
@@ -12,12 +12,12 @@ import java.math.BigDecimal;
 public class ProductController {
 
     @GetMapping("/hello")
-    public ProductModel hello2() {
-        ProductModel productModel = new ProductModel();
-        productModel.setCost(new BigDecimal("123.5"));
-        productModel.setName("Brian Zuniga");
-        productModel.setStoreName("Skytouch");
-        return productModel;
+    public ProductEntity hello2() {
+        ProductEntity productEntity = new ProductEntity();
+        productEntity.setCost(new BigDecimal("123.5"));
+        productEntity.setName("Brian Zuniga");
+        productEntity.setStoreName("Skytouch");
+        return productEntity;
     }
 
 }

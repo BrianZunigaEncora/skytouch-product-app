@@ -1,4 +1,4 @@
-package com.skytouch.model;
+package com.skytouch.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductModel {
+public class ProductEntity {
     private String name;
     private BigDecimal cost;
     private String storeName;

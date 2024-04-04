@@ -1,13 +1,12 @@
 package com.productsmanagement.controller;
 
 import com.productsmanagement.service.ProductManagementService;
-import com.skytouch.dto.ProductDTO;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
-
-@RestController
+@Controller
 @RequestMapping("/product-management")
 public class ProductManagementController {
 
@@ -18,13 +17,10 @@ public class ProductManagementController {
     }
 
     @GetMapping("/products")
-    public List<ProductDTO> getProducts() {
-        return productManagementService.getAllProducts();
+    public String getProducts(Model model) {
+        model.addAttribute("products", productManagementService.getAllProducts());
+        return "view-products";
     }
 
-    @PostMapping(value = "/products", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ProductDTO addProduct(@RequestBody ProductDTO productDTO) {
-        return productManagementService.addProduct(productDTO);
-    }
 
 }

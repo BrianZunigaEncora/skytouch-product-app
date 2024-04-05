@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap Example</title>
+    <title>Products Catalog</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -12,19 +12,28 @@
 </head>
 <body>
 
-    <div class="container-fluid">
-        <table class="table table-striped">
-            <thead>
+
+<div class="container">
+    <h2>Products</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Cost</th>
+            <th>Store Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${products}" var="product">
             <tr>
-                <th>ISBN</th>
-                <th>Name</th>
-                <th>Author</th>
+                <td>${product.name}</td>
+                <td>${product.cost}</td>
+                <td>${product.storeName}</td>
             </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-    </div>
+        </c:forEach>
+        </tbody>
+    </table>
+</div>
 
 </body>
 </html>

@@ -4,11 +4,11 @@ import com.skytouch.dto.ProductDTO;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Utils {
     public static List<ProductDTO> getMockProducts () {
-        List<ProductDTO> mockList = new ArrayList<>();
 
         ProductDTO productDTO = new ProductDTO();
         productDTO.setName("Brian 1 Test");
@@ -25,10 +25,7 @@ public class Utils {
         productDTO3.setCost(new BigDecimal("142.4"));
         productDTO3.setStoreName("Store 3 test");
 
-        mockList.add(productDTO);
-        mockList.add(productDTO2);
-        mockList.add(productDTO3);
 
-        return mockList;
+        return Arrays.asList(productDTO, productDTO2, productDTO3);
     }
 }

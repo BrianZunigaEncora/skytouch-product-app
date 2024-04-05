@@ -12,18 +12,15 @@
 </head>
 <body>
 
-    <div class="container-fluid">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>ISBN</th>
-                <th>Name</th>
-                <th>Author</th>
-            </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+    <div class="container-fluid col-md-offset-4">
+       <h2>Task</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <a href="/products/add" class="btn btn-info">Add Product</a>
+                <a href="/products/" class="btn btn-info">Product Catalog</a>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
     </div>
 
 </body>

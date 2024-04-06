@@ -12,12 +12,23 @@
 </head>
 <body>
 
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/product-management/">TASK FOR SKYTOUCH</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="/product-management/products/" >Product Catalog</a></li>
+            <li><a href="/product-management/products/add/">Add Product</a></li>
+        </ul>
+    </div>
+</nav>
     <div class="container-fluid col-md-offset-4">
        <h2>Task</h2>
         <div class="row">
             <div class="col-md-4">
-                <a href="/products/add" class="btn btn-info">Add Product</a>
-                <a href="/products/" class="btn btn-info">Product Catalog</a>
+                <a href="/product-management/products/add" class="btn btn-info">Add Product</a>
+                <a href="/product-management/products/" class="btn btn-info">Product Catalog</a>
             </div>
             <div class="col-md-4"></div>
         </div>

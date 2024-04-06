@@ -12,6 +12,18 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/product-management/">TASK FOR SKYTOUCH</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="/product-management/products/" >Product Catalog</a></li>
+            <li><a href="/product-management/products/add/">Add Product</a></li>
+        </ul>
+    </div>
+</nav>
+
 <c:if test="${addProductSuccess == true}">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
@@ -32,14 +44,14 @@
 <div class="row">
     <div class="col-md-4 col-md-offset-4">
         <h2>Add Product</h2>
-        <form:form action="${add_product_url}" method="post" modelAttribute="product">
+        <form:form action="${add_product_url}" method="post" modelAttribute="product" onsubmit="return validateProduct()">
             <div class="form-group">
                 <form:label path="name">Name: </form:label>
                 <form:input type="text" path="name" cssClass="form-control"/>
             </div>
             <div class="form-group">
                 <form:label path="cost">Cost: </form:label>
-                <form:input type="number" path="cost" cssClass="form-control" />
+                <form:input type="decimal" path="cost" cssClass="form-control" />
             </div>
             <div class="form-group">
                 <form:label path="storeName">Store Name: </form:label>
@@ -51,3 +63,46 @@
 </div>
 </body>
 </html>
+
+<script>
+    function isDecimal (number) {
+        return /^\d+(\.\d+)?$/.test(number);
+    }
+
+    function containsSpecialCharacters (str) {
+        return !!str.match(/[^a-zA-Z0-9 ]/g);
+    }
+
+    $('#cost').change( function () {
+        let cost = $('#cost').val();
+        if (!isDecimal(cost)) {
+            $('#cost').val('');
+        } else {
+            cost = (Math.round(cost * 100) / 100).toFixed(2);
+            $('#cost').val(cost);
+        }
+    });
+
+    function validateProduct (){
+        var name = $("#name").val();
+        var cost = $("#cost").val();
+        var storeName = $("#storeName").val();
+        if (name === '' || containsSpecialCharacters(name)) {
+            alert('Name can not be empty or contains special characters');
+            $("#name").focus();
+            return false;
+        }
+        if (storeName === '' || containsSpecialCharacters(storeName)) {
+            alert('Store name can not be empty or contains special characters');
+            $("#storeName").focus();
+            return false;
+        }
+
+        if (cost === '' || !isDecimal(cost)) {
+            alert('Cost can not be empty or contains alphabetic characters');
+            $("#cost").focus();
+            return false;
+        }
+        return true;
+    }
+</script>

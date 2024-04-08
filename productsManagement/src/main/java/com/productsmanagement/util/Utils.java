@@ -1,12 +1,15 @@
 package com.productsmanagement.util;
 
 import com.skytouch.dto.ProductDTO;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Utils {
     public static List<ProductDTO> getMockProducts () {
 
@@ -27,5 +30,14 @@ public class Utils {
 
 
         return Arrays.asList(productDTO, productDTO2, productDTO3);
+    }
+
+    public static ProductDTO mockDtoObject() {
+        ProductDTO productDTO = new ProductDTO();
+        productDTO.setName("Brian 1 Test");
+        productDTO.setCost(new BigDecimal("123.4"));
+        productDTO.setStoreName("Store test");
+
+        return productDTO;
     }
 }

@@ -7,6 +7,21 @@ services:
       POSTGRES_PASSWORD: skytouch-brian
       POSTGRES_DB: skytouch
     ports:
-      - "5432:5432"
+      - "5431:5432"
     volumes:
       - "~/apps/postgres:/var/lib/postgresql/data"
+
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      - "5671:5672"
+      - "15671:15672"
+
+networks:
+  default:
+    driver: bridge
+

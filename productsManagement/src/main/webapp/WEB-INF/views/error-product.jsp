@@ -28,17 +28,10 @@
 
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            <div class="alert alert-danger" role="alert">Message error: ${message}</div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-            <div class="alert alert-danger" role="alert">Reference: ${ref}</div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="alert alert-danger" role="alert">Object: ${object}</div>
+            <div class="alert alert-danger" role="alert">
+                <h3> ${message} </h3>
+            </div>
+            <a href="/product-management/" class="btn btn-info">HOME PAGE</a>
         </div>
     </div>
 

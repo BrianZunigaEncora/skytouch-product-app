@@ -23,6 +23,7 @@ import org.springframework.ui.Model;
 
 import java.nio.charset.Charset;
 
+import static com.productsmanagement.util.PageConstants.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -70,7 +71,7 @@ public class ProductManagementControllerTest {
         this.mockMvc.perform(get("/products"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(view().name("product-catalog"))
+                .andExpect(view().name(PRODUCT_CATALOG_PAGE))
                 .andExpect(model().attribute("products", Utils.getMockProducts()));
     }
 
@@ -97,8 +98,8 @@ public class ProductManagementControllerTest {
 
         mockMvc.perform(requestAddProduct)
                 .andExpect(redirectedUrl("/products/add"))
-                .andExpect(flash().attribute("savedProduct", mockRequestProduct))
-                .andExpect(flash().attribute("addProductSuccess", true));
+                .andExpect(flash().attribute(SAVED_PRODUCT, mockRequestProduct))
+                .andExpect(flash().attribute(SAVED_PRODUCT_SUCCESS, true));
     }
 
 }

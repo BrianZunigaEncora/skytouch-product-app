@@ -27,7 +27,7 @@
 <c:if test="${addProductSuccess == true}">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            <div class="alert alert-success" role="alert">Successfully added Product: ${savedProduct.name}</div>
+            <div class="alert alert-warning" role="alert">Processing: ${savedProduct.name}</div>
         </div>
     </div>
 </c:if>

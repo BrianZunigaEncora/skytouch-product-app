@@ -1,6 +1,8 @@
 package com.productsmanagement.controller;
 
+import com.productsmanagement.exception.ProductException;
 import com.productsmanagement.service.ProductManagementService;
+import com.productsmanagement.util.PageConstants;
 import com.skytouch.dto.ProductDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
+
 
 @Controller
 public class ProductManagementController {
@@ -19,29 +22,54 @@ public class ProductManagementController {
         this.productManagementService = productManagementService;
     }
 
+    /**
+     *
+     * @return index page
+     */
     @GetMapping("")
     public String getHomePage() {
         return "index";
     }
 
-    @GetMapping("/products")
+    @GetMapping("/error")
+    public String getErrorPage() {
+        return "index";
+    }
+
+    /**
+     *
+     * @param model model layer to add or retrieve information
+     * @return product catalog page
+     */
+    @GetMapping(PageConstants.PRODUCT_CATALOG_URL)
     public String getProducts(Model model) {
-        model.addAttribute("products", productManagementService.getAllProducts());
-        return "product-catalog";
+        model.addAttribute(PageConstants.PRODUCTS_ATTRIBUTE , productManagementService.getAllProducts());
+        return PageConstants.PRODUCT_CATALOG_PAGE;
     }
 
-    @GetMapping("/products/add")
+    /**
+     *
+     * @param model model layer to add or retrieve information
+     * @return add book page
+     */
+    @GetMapping(PageConstants.ADD_PRODUCT_URL)
     public String addBookView(Model model) {
-        model.addAttribute("product", new ProductDTO());
-        return "add-product";
+        model.addAttribute(PageConstants.PRODUCT_ATTRIBUTE, new ProductDTO());
+        return PageConstants.ADD_PRODUCT_PAGE;
     }
 
-    @PostMapping("/products/add")
-    public RedirectView addProductAction(@ModelAttribute("product") ProductDTO product, RedirectAttributes redirectAttributes) {
-        final RedirectView redirectView = new RedirectView("/products/add", true);
+    /**
+     *
+     * @param product product object to process
+     * @param redirectAttributes redirect attributes
+     * @return add product with redirect attributes
+     */
+    @PostMapping(PageConstants.ADD_PRODUCT_URL)
+    public RedirectView addProductAction(@ModelAttribute(PageConstants.PRODUCT_ATTRIBUTE) ProductDTO product, RedirectAttributes redirectAttributes) {
+        final RedirectView redirectView = new RedirectView(PageConstants.ADD_PRODUCT_URL, true);
         ProductDTO savedProduct = productManagementService.addProduct(product);
-        redirectAttributes.addFlashAttribute("savedProduct", savedProduct);
-        redirectAttributes.addFlashAttribute("addProductSuccess", true);
+        redirectAttributes.addFlashAttribute(PageConstants.SAVED_PRODUCT, savedProduct);
+        redirectAttributes.addFlashAttribute(PageConstants.SAVED_PRODUCT_SUCCESS, true);
         return redirectView;
     }
 
